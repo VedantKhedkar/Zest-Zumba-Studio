@@ -40,7 +40,7 @@ const Navbar = () => {
       dropdown: [
         { name: 'Photo Gallery', href: '#image-gallery' },
         { name: 'Video Gallery', href: '#shorts-gallery' },
-        { name: 'Testimonial Gallery', href: '#Testimonial-Gallery' },
+        { name: 'Clients Testimonial', href: '#Testimonial-Gallery' },
       ]
     },
   ];
@@ -68,7 +68,7 @@ const Navbar = () => {
                 <div className={clsx(
                   "relative transition-all duration-500", 
                   // Dimensions: Bigger at top, slightly smaller when scrolled
-                  isScrolled ? "w-16 h-16" : "w-18 h-18"
+                  isScrolled ? "w-16 h-14" : "w-18 h-18"
                 )}>
                   <Image 
                     // SWITCHES IMAGE BASED ON SCROLL STATE
@@ -98,7 +98,7 @@ const Navbar = () => {
                     "text-[#0ea5e9] font-bold uppercase w-full text-center ml-1 transition-all duration-500", 
                     // CHANGED: Increased tracking to [1.2em] to satisfy full width
                     isScrolled 
-                        ? "text-[0.6rem] tracking-[0.9em]" 
+                        ? "text-[0.6rem] tracking-[1.1em]" 
                         : "text-[0.7rem] tracking-[1.2em]"
                   )}>
                      Studio

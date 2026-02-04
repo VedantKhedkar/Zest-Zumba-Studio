@@ -57,6 +57,26 @@ const TrainersSection = () => {
                   <span className="font-semibold text-slate-800 text-sm">{item}</span>
                 </div>
               ))}
+            </div> 
+            <div className="flex items-center gap-6">
+              <p className="font-bold text-slate-900 text-sm uppercase tracking-wide">Connect:</p>
+              <div className="flex space-x-3">
+                {[
+                  { icon: <FaInstagram />, url: "https://www.instagram.com/seemabehare?igsh=M2xwY3hhZm03Yzl6" },
+                  { icon: <FaFacebookF />, url: "https://www.facebook.com/share/1AdEqE8Dzg/" },
+                  { icon: <FaWhatsapp />, url: "https://wa.me/+918087409501" } // Add the studio WhatsApp number here
+                ].map((social, i) => (
+                  <a 
+                    key={i} 
+                    href={social.url}
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="w-10 h-10 rounded-full border border-slate-200 bg-white flex items-center justify-center text-slate-500 hover:text-white hover:border-transparent hover:bg-gradient-to-r hover:from-yellow-400 hover:to-purple-600 transition-all duration-300 shadow-sm hover:shadow-lg hover:-translate-y-1"
+                  >
+                    {social.icon}
+                  </a>
+                ))}
+              </div>
             </div>
           </div>
 

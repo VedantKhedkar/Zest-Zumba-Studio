@@ -57,12 +57,12 @@ const HeroSection = () => {
           </a>
 
           {/* Secondary Button */}
-          <a 
+          {/* <a 
             href="#about" 
             className="px-6 py-3 rounded-full bg-white/5 backdrop-blur-sm border-2 border-yellow-400 text-yellow-400 font-bold text-base hover:bg-yellow-400 hover:text-purple-900 transition-all duration-300 shadow-md"
           >
             Learn More
-          </a>
+          </a> */}
         </div>
       </div>
     </section>

@@ -35,7 +35,7 @@ const PackagesSection = () => {
       
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-black text-slate-900 mb-4 font-heading tracking-tight uppercase">
+          <h2 className="text-4xl md:text-5xl font-black text-slate-900 mb-4 font-heading tracking-tight ">
             Membership <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-yellow-500">Plans</span>
           </h2>
           <p className="text-slate-500 text-lg font-medium">
