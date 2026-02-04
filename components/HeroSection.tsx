@@ -49,12 +49,12 @@ const HeroSection = () => {
           
           {/* Primary Button */}
           <a 
-            href="#packages" 
-            className="group flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-purple-600 to-purple-500 hover:from-purple-700 hover:to-purple-600 text-white font-bold text-base shadow-lg shadow-purple-500/30 transition-all transform hover:-translate-y-1 active:scale-95 border border-purple-400/20"
-          >
-            <span>View Packages</span>
-            <FiArrowRight className="group-hover:translate-x-1 transition-transform" />
-          </a>
+              href="#packages" 
+              className="group flex items-center justify-center gap-2 w-fit mx-auto px-5 py-2.5 md:px-6 md:py-3 rounded-full bg-gradient-to-r from-purple-600 to-purple-500 hover:from-purple-700 hover:to-purple-600 text-white font-bold text-sm md:text-base shadow-lg shadow-purple-500/30 transition-all transform hover:-translate-y-1 active:scale-95 border border-purple-400/20"
+            >
+              <span>View Packages</span>
+              <FiArrowRight className="group-hover:translate-x-1 transition-transform" />
+            </a>
 
           {/* Secondary Button */}
           {/* <a 

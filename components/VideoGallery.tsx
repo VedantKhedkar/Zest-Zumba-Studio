@@ -20,7 +20,6 @@ const YouTubeShortsGallery = () => {
   const [activeShort, setActiveShort] = useState<string | null>(null);
   const [showAllShorts, setShowAllShorts] = useState(false);
 
-  // Show first 4 on main page
   const previewShorts = allShortsData.slice(0, 4);
 
   useEffect(() => {
@@ -32,48 +31,48 @@ const YouTubeShortsGallery = () => {
   }, [activeShort, showAllShorts]);
 
   return (
-    <section id="shorts-gallery" className="py-20 md:py-24 bg-gradient-to-br from-purple-50 via-white to-yellow-50 relative overflow-hidden">
+    /* UPDATED: Added scroll-mt-10 for mobile to ensure clean UI when scrolled from navbar */
+    <section 
+      id="shorts-gallery" 
+      className="py-10 md:py-24 bg-gradient-to-br from-purple-50 via-white to-yellow-50 relative overflow-hidden scroll-mt-10 md:scroll-mt-20"
+    >
       
-      {/* Background Decor */}
       <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-purple-600/5 rounded-full blur-[120px] -z-10" />
       <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-yellow-500/10 rounded-full blur-[100px] -z-10" />
 
-      {/* Giant Watermark Text */}
       <div className="absolute top-10 left-10 text-[12rem] md:text-[15rem] font-black text-purple-900/5 select-none pointer-events-none -z-10 leading-none tracking-tighter">
         SHORTS
       </div>
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         
-        {/* HEADER SECTION - Mobile Optimized (Right Aligned Button) */}
-        <div className="flex flex-row items-end justify-between mb-12 gap-4">
+        {/* HEADER SECTION - Optimized for Mobile Alignment */}
+        <div className="flex flex-row items-end justify-between mb-10 md:mb-12 gap-2 md:gap-4">
           
-          {/* Text Container */}
           <div className="max-w-2xl text-left">
-            <div className="flex items-center gap-2 md:gap-3 text-purple-600 font-bold tracking-widest uppercase text-[10px] md:text-xs mb-2 md:mb-4">
+            <div className="flex items-center gap-2 md:gap-3 text-purple-600 font-bold tracking-widest uppercase text-[10px] md:text-xs mb-1 md:mb-4">
               <span className="w-6 md:w-8 h-[3px] bg-yellow-400 rounded-full"></span>
               <span>Studio in Motion</span>
             </div>
-            <h2 className="text-3xl md:text-5xl font-black text-slate-900 tracking-tighter font-heading leading-tight">
+            <h2 className="text-2xl sm:text-3xl md:text-5xl font-black text-slate-900 tracking-tighter font-heading leading-tight">
               Trending <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-yellow-500">Shorts </span>
             </h2>
           </div>
           
-          {/* VIEW ALL BUTTON - Positioned Right on all screens */}
+          {/* VIEW ALL BUTTON - Fixed Mobile Scaling and Alignment */}
           <button
             onClick={() => setShowAllShorts(true)}
-            className="group flex items-center gap-2 px-4 py-2 md:px-6 md:py-3 bg-white border border-purple-100 rounded-full hover:border-yellow-400 hover:shadow-lg hover:shadow-purple-500/10 transition-all duration-300 flex-shrink-0 mb-1"
+            className="group flex items-center gap-1.5 md:gap-2 px-3 py-2 md:px-6 md:py-3 bg-white border border-purple-100 rounded-full hover:border-yellow-400 hover:shadow-lg hover:shadow-purple-500/10 transition-all duration-300 flex-shrink-0 mb-0.5 md:mb-1"
           >
-            <span className="font-bold text-slate-600 text-xs md:text-sm group-hover:text-purple-700">
+            <span className="font-bold text-slate-600 text-[10px] md:text-sm group-hover:text-purple-700">
               View All
             </span>
-            <div className="w-6 h-6 md:w-8 md:h-8 rounded-full bg-purple-50 flex items-center justify-center group-hover:bg-yellow-400 transition-colors">
-              <FiGrid className="text-purple-600 text-xs md:text-sm group-hover:text-white" />
+            <div className="w-5 h-5 md:w-8 md:h-8 rounded-full bg-purple-50 flex items-center justify-center group-hover:bg-yellow-400 transition-colors">
+                   <FiArrowRight className="text-purple-600 text-[10px] md:text-sm group-hover:text-purple-900" />
             </div>
           </button>
         </div>
 
-        {/* Gallery Grid (Preview: 4 Items) */}
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-8">
           {previewShorts.map((video, index) => (
             <div key={index} className="w-full aspect-[9/16]">
@@ -87,22 +86,14 @@ const YouTubeShortsGallery = () => {
 
       </div>
 
-      {/* ========================================= */}
-      {/* 1. "VIEW ALL" POPUP MODAL                 */}
-      {/* ========================================= */}
       {showAllShorts && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 animate-in fade-in zoom-in-95 duration-300">
-          
-          {/* Backdrop */}
           <div 
              className="absolute inset-0 bg-purple-900/80 backdrop-blur-md"
              onClick={() => setShowAllShorts(false)}
            />
 
-          {/* Scrollable Card */}
           <div className="relative w-full max-w-7xl bg-white rounded-[2.5rem] shadow-2xl overflow-hidden flex flex-col h-[85vh] border border-white/40">
-              
-              {/* Header */}
               <div className="flex items-center justify-between px-6 md:px-8 py-6 bg-white border-b border-slate-100 z-10 shrink-0">
                   <div>
                     <h3 className="text-xl md:text-2xl font-black text-slate-900 font-heading tracking-tight">
@@ -120,7 +111,6 @@ const YouTubeShortsGallery = () => {
                   </button>
               </div>
 
-              {/* Scrollable Grid */}
               <div className="flex-1 overflow-y-auto p-4 md:p-8 bg-slate-50 custom-scrollbar">
                   <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
                     {allShortsData.map((video, index) => (
@@ -137,9 +127,6 @@ const YouTubeShortsGallery = () => {
         </div>
       )}
 
-      {/* ========================================= */}
-      {/* 2. FULL SCREEN PLAYER MODAL               */}
-      {/* ========================================= */}
       {activeShort && (
         <div className="fixed inset-0 z-[60] flex items-center justify-center bg-black/95 backdrop-blur-xl p-4 animate-in fade-in duration-300">
            <button 
@@ -170,7 +157,6 @@ const YouTubeShortsGallery = () => {
   );
 };
 
-// --- REUSABLE SHORT CARD COMPONENT ---
 const ShortCard = ({ video, onClick }: { video: any, onClick: () => void }) => {
     return (
         <div
@@ -184,7 +170,6 @@ const ShortCard = ({ video, onClick }: { video: any, onClick: () => void }) => {
             overflow-hidden cursor-pointer
             "
         >
-            {/* Thumbnail / Iframe Preview */}
             <iframe
             src={`https://www.youtube.com/embed/${video.id}?autoplay=0&loop=1&playlist=${video.id}&controls=0&modestbranding=1&rel=0&showinfo=0&iv_load_policy=3&fs=0`}
             title={video.label}
@@ -194,7 +179,6 @@ const ShortCard = ({ video, onClick }: { video: any, onClick: () => void }) => {
 
             <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/80 pointer-events-none transition-opacity duration-300 group-hover:via-transparent/50" />
 
-            {/* Shorts Badge */}
             <div className="absolute top-3 right-3 md:top-4 md:right-4 bg-white/20 backdrop-blur-md border border-white/20 px-2 py-0.5 md:px-3 md:py-1 rounded-full z-20 pointer-events-none">
                 <div className="flex items-center gap-1.5">
                     <div className="w-1.5 h-1.5 md:w-2 md:h-2 bg-red-500 rounded-full animate-pulse" />
@@ -202,14 +186,12 @@ const ShortCard = ({ video, onClick }: { video: any, onClick: () => void }) => {
                 </div>
             </div>
 
-            {/* Play Button */}
             <div className="absolute inset-0 flex items-center justify-center z-10">
                 <div className="w-10 h-10 md:w-14 md:h-14 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center border border-white/30 scale-75 opacity-0 group-hover:opacity-100 group-hover:scale-100 transition-all duration-500">
                     <FiPlay className="text-white fill-white ml-0.5" size={20} />
                 </div>
             </div>
 
-            {/* Bottom Content */}
             <div className="absolute bottom-0 left-0 right-0 p-3 md:p-5 z-20 transform translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
                 <span className="inline-block px-1.5 py-0.5 rounded bg-yellow-400 text-purple-900 text-[8px] md:text-[10px] font-black uppercase tracking-widest mb-1 md:mb-2">
                     {video.category}
