@@ -29,7 +29,7 @@ const PackagesSection = () => {
 
   // CHANGED: Added function to handle WhatsApp redirection
   const handleJoinNow = (pkg: typeof packages[0]) => {
-    const phoneNumber = "918275794770"; // Replace with your actual WhatsApp number (e.g., 919876543210)
+    const phoneNumber = "918087409501"; // Replace with your actual WhatsApp number (e.g., 919876543210)
     
     // Constructing the message
     const message = `Dear Team Zest Zumba Studio,
