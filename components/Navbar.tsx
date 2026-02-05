@@ -19,7 +19,7 @@ const Navbar = () => {
 
   // --- CONFIGURATION: DEFINE YOUR IMAGES HERE ---
   const LOGO_LANDING = "/images/logowhite.png"; // Image shown at the top (Big)
-  const LOGO_SCROLLED = "/images/logo11.png";  // Image shown when scrolled (Small)
+  const LOGO_SCROLLED = "/images/logo11.png";   // Image shown when scrolled (Small)
   // ---------------------------------------------
 
   useEffect(() => {
@@ -34,7 +34,7 @@ const Navbar = () => {
     { name: 'Home', href: '/' },
     { name: 'About', href: '#about' },
     { name: 'Packages', href: '#packages' },
-   
+    
     { 
       name: 'Gallery', 
       href: '#image-gallery',
@@ -59,7 +59,8 @@ const Navbar = () => {
             : "bg-transparent py-4 border-transparent"
         )}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* CHANGED: Reduced padding (px-3) to move logo closer to left edge */}
+        <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center">
             
             {/* BRAND LOGO CONTAINER */}
@@ -69,8 +70,8 @@ const Navbar = () => {
                 {/* 1. LOGO IMAGE - DYNAMIC SOURCE & SIZE */}
                 <div className={clsx(
                   "relative transition-all duration-500", 
-                  // Dimensions: Bigger at top, slightly smaller when scrolled
-                  isScrolled ? "w-16 h-14" : "w-18 h-18"
+                  // Dimensions: Slightly smaller on mobile now
+                  isScrolled ? "w-12 h-10 md:w-16 md:h-14" : "w-14 h-14 md:w-18 md:h-18"
                 )}>
                   <Image 
                     // SWITCHES IMAGE BASED ON SCROLL STATE
@@ -83,13 +84,15 @@ const Navbar = () => {
                 </div>
 
                 {/* 2. LOGO TEXT */}
-             <div className={clsx("flex flex-col items-center leading-none -skew-x-6 origin-bottom", fredoka.className)}>
+                <div className={clsx("flex flex-col items-center leading-none -skew-x-6 origin-bottom", fredoka.className)}>
                   
                   {/* Top Line: Zest Zumba */}
                   <div className={clsx(
                     "flex gap-1.5 font-bold transition-all duration-500",
-                    // CHANGED: Increased Sizes (2xl -> 4xl for top, xl -> 2xl for scroll)
-                    isScrolled ? "text-2xl" : "text-4xl"
+                    // CHANGED: Responsive Text Sizes (Smaller on Mobile)
+                    isScrolled 
+                      ? "text-xl md:text-2xl"  // Scrolled: xl on mobile, 2xl on desktop
+                      : "text-3xl md:text-4xl" // Top: 2xl on mobile, 4xl on desktop
                   )}>
                     <span className="text-[#ec4899] drop-shadow-sm">Zest</span>
                     <span className="text-[#f59e0b] drop-shadow-sm">Zumba</span>
@@ -98,12 +101,12 @@ const Navbar = () => {
                   {/* Bottom Line: Studio */}
                   <span className={clsx(
                     "text-[#0ea5e9] font-bold uppercase w-full text-center ml-1 transition-all duration-500", 
-                    // CHANGED: Increased tracking to [1.2em] to satisfy full width
+                    // CHANGED: Adjusted tracking/size for mobile consistency
                     isScrolled 
-                        ? "text-[0.6rem] tracking-[1.1em]" 
-                        : "text-[0.7rem] tracking-[1.2em]"
+                        ? "text-[0.5rem] md:text-[0.6rem] tracking-[1.1em]" 
+                        : "text-[0.6rem] md:text-[0.7rem] tracking-[1.2em]"
                   )}>
-                     Studio
+                      Studio
                   </span>
                 </div>
               </Link>

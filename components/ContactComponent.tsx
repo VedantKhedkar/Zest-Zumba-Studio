@@ -7,15 +7,61 @@ const ContactComponent = () => {
   const [pending, setPending] = useState(false);
   const [showToast, setShowToast] = useState(false);
 
+  // State for form fields
+  const [formData, setFormData] = useState({
+    fullName: "",
+    mobile: "",
+    dateTime: "",
+    category: "Zumba for Female", // Default value matching first option
+    goals: ""
+  });
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setPending(true);
 
+    // Simulated API delay
     setTimeout(() => {
       setPending(false);
       setShowToast(true);
+
+      // WhatsApp Redirection Logic
+      const phoneNumber = "918087409501"; // Your WhatsApp Number
+      
+      // Formatting the date for better readability
+      const formattedDate = new Date(formData.dateTime).toLocaleString('en-IN', {
+        dateStyle: 'medium',
+        timeStyle: 'short',
+      });
+
+      // Constructing the message based on your template
+     const message = `Dear Team Zest Zumba Studio,
+
+      I recently visited your website and would like to meet personally for a one-on-one interaction. 
+      Please confirm my appointment for the given date and time. For your reference, I have shared my details below:
+
+      *Name:* ${formData.fullName}
+      *Mobile:* ${formData.mobile}
+      *Class Category:* ${formData.category}
+      *Preferred Date:* ${formattedDate}
+      *Specific Goals:* ${formData.goals}
+
+      Looking forward to joining the rhythm!
+
+      Thank you.`;
+
+      const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+      
+      // Open WhatsApp in new tab
+      window.open(whatsappUrl, '_blank');
+
+      // Hide toast after 3 seconds
       setTimeout(() => setShowToast(false), 3000);
-    }, 2000); 
+    }, 1500); 
   };
 
   return (
@@ -37,8 +83,8 @@ const ContactComponent = () => {
               <FiCheck size={18} />
            </div>
            <div>
-              <h4 className="font-bold text-slate-800 text-sm">Request Sent!</h4>
-              <p className="text-slate-500 text-xs">We will contact you shortly.</p>
+              <h4 className="font-bold text-slate-800 text-sm">Redirecting to WhatsApp...</h4>
+              <p className="text-slate-500 text-xs">Please send the message to confirm.</p>
            </div>
         </div>
       </div>
@@ -76,7 +122,7 @@ const ContactComponent = () => {
                 { 
                     icon: <FiPhone />, 
                     label: "Call for Enquiry", 
-                    value: "+91 9876543210\n+91 9123456789"
+                    value: "+91 8087409501"
                 },
                 { 
                     icon: <FiMail />, 
@@ -122,6 +168,9 @@ const ContactComponent = () => {
                 <div className="relative">
                     <input 
                       type="text" 
+                      name="fullName"
+                      value={formData.fullName}
+                      onChange={handleChange}
                       placeholder="Enter your full name"
                       className="w-full pl-10 md:pl-12 pr-4 md:pr-5 py-3 md:py-4 rounded-xl md:rounded-2xl bg-purple-50/50 border-none focus:ring-2 focus:ring-purple-500/20 transition-all outline-none text-slate-900 text-sm md:text-base"
                       required
@@ -137,6 +186,9 @@ const ContactComponent = () => {
                   <div className="relative">
                       <input 
                         type="tel" 
+                        name="mobile"
+                        value={formData.mobile}
+                        onChange={handleChange}
                         placeholder="10-digit number"
                         pattern="[0-9]{10}"
                         maxLength={10}
@@ -157,6 +209,9 @@ const ContactComponent = () => {
                   <div className="relative">
                       <input 
                         type="datetime-local" 
+                        name="dateTime"
+                        value={formData.dateTime}
+                        onChange={handleChange}
                         min={new Date().toISOString().slice(0, 16)}
                         className="w-full pl-10 md:pl-12 pr-4 md:pr-5 py-3 md:py-4 rounded-xl md:rounded-2xl bg-purple-50/50 border-none focus:ring-2 focus:ring-purple-500/20 transition-all outline-none text-slate-900 cursor-pointer text-sm md:text-base uppercase"
                         required
@@ -166,18 +221,23 @@ const ContactComponent = () => {
                 </div>
               </div>
 
-              {/* Class Category - UPDATED OPTIONS */}
+              {/* Class Category */}
               <div className="space-y-1.5 md:space-y-2">
                 <label className="text-xs md:text-sm font-bold text-purple-700 ml-1">Class Category</label>
                 <div className="relative">
-                  <select className="w-full px-4 md:px-5 py-3 md:py-4 rounded-xl md:rounded-2xl bg-purple-50/50 border-none focus:ring-2 focus:ring-purple-500/20 transition-all outline-none text-slate-900 appearance-none cursor-pointer text-sm md:text-base">
+                  <select 
+                    name="category"
+                    value={formData.category}
+                    onChange={handleChange}
+                    className="w-full px-4 md:px-5 py-3 md:py-4 rounded-xl md:rounded-2xl bg-purple-50/50 border-none focus:ring-2 focus:ring-purple-500/20 transition-all outline-none text-slate-900 appearance-none cursor-pointer text-sm md:text-base"
+                  >
                     <option>Zumba for Female</option>
                     <option>Zumba for Kids</option>
                     <option>Personalized Diet Plans</option>
                     <option>Yoga and Meditation</option>
                     <option>Personal Fitness Training</option>
                     <option>Book Consultation</option>
-                      <option>Aerobics</option>
+                    <option>Aerobics</option>
                   </select>
                   <div className="absolute right-5 top-1/2 -translate-y-1/2 pointer-events-none text-slate-400">
                     ▼
@@ -191,6 +251,9 @@ const ContactComponent = () => {
                 <div className="relative">
                     <textarea 
                       rows={2}
+                      name="goals"
+                      value={formData.goals}
+                      onChange={handleChange}
                       placeholder="e.g. Weight loss, Beginner, etc."
                       className="w-full pl-10 md:pl-12 pr-4 md:pr-5 py-3 md:py-4 rounded-xl md:rounded-2xl bg-purple-50/50 border-none focus:ring-2 focus:ring-purple-500/20 transition-all outline-none text-slate-900 resize-none text-sm md:text-base"
                       required
