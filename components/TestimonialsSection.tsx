@@ -2,6 +2,7 @@
 import React from "react";
 import Image from "next/image";
 import { FaStar, FaQuoteRight } from "react-icons/fa";
+import { FcGoogle } from "react-icons/fc";
 import clsx from "clsx";
 
 const testimonials = [
@@ -67,8 +68,8 @@ const TestimonialsSection = () => {
           animation: scroll 30s linear infinite;
         }
         
-        .marquee-container:hover .animate-scroll,
-        .marquee-container:active .animate-scroll {
+        /* RESTORED: Pause animation on hover */
+        .marquee-container:hover .animate-scroll {
           animation-play-state: paused;
         }
 
@@ -90,18 +91,22 @@ const TestimonialsSection = () => {
         <div className="text-center max-w-3xl mx-auto mb-10 md:mb-16 px-6">
             <h3 className="text-3xl md:text-5xl font-black text-slate-900 mb-4 md:mb-6 font-heading leading-tight">
                 Real Stories. <br/>
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-yellow-400 ">
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-yellow-400 ">
                     Real Transformations.
                 </span>
             </h3>
             
-            <div className="inline-flex items-center gap-2 bg-white px-5 py-2 rounded-full shadow-sm border border-slate-100">
+            <div className="inline-flex items-center gap-3 bg-white px-5 py-2.5 rounded-full shadow-sm border border-slate-100">
                 <div className="flex gap-1 text-yellow-400">
-                    {[1,2,3,4,5].map(i => <FaStar key={i} size={14} />)}
+                    {[1,2,3,4,5].map(i => <FaStar key={i} size={16} />)}
                 </div>
-                <span className="text-sm font-bold text-slate-600">
-                    4.9/5 Average Rating
-                </span>
+                <div className="w-px h-4 bg-slate-200"></div>
+                <div className="flex items-center gap-2">
+                    <FcGoogle size={20} />
+                    <span className="text-sm font-bold text-slate-600">
+                        4.9/5 Average Rating
+                    </span>
+                </div>
             </div>
         </div>
 
@@ -116,11 +121,12 @@ const TestimonialsSection = () => {
                 {[...testimonials, ...testimonials].map((item, index) => (
                     <div 
                         key={index} 
-                        className="group relative w-[300px] md:w-[450px] flex-shrink-0 bg-white p-6 md:p-8 pt-10 md:pt-12 rounded-[2rem] md:rounded-[2.5rem] shadow-xl shadow-slate-200/50 border border-slate-100 hover:shadow-2xl md:hover:-translate-y-2 transition-all duration-300 overflow-hidden"
+                        className="group relative w-[300px] md:w-[450px] flex-shrink-0 bg-white p-6 md:p-8 pt-10 md:pt-12 rounded-[2rem] md:rounded-[2.5rem] shadow-xl shadow-slate-200/50 border border-slate-100 hover:shadow-2xl md:hover:-translate-y-2 transition-all duration-300 overflow-hidden cursor-default"
                     >
                         <div className={clsx("absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r", item.color)}></div>
 
-                        <div className="absolute top-6 md:top-8 right-6 md:right-8 text-slate-100 group-hover:text-slate-200 transition-colors">
+                        {/* CHANGED: Text color changed to slate-300 to be less faint but still subtle */}
+                        <div className="absolute top-6 md:top-8 right-6 md:right-8 text-slate-300 group-hover:text-slate-400 transition-colors">
                             <FaQuoteRight size={32} className="md:w-[40px] md:h-[40px]" />
                         </div>
 
@@ -145,8 +151,12 @@ const TestimonialsSection = () => {
                             "{item.quote}"
                         </p>
 
-                        <div className="mt-4 md:mt-6 flex gap-1 text-yellow-400/30 group-hover:text-yellow-400 transition-colors duration-300">
-                            {[1,2,3,4,5].map(i => <FaStar key={i} size={12} />)}
+                        <div className="mt-4 md:mt-6 flex items-center gap-2">
+                            <FcGoogle size={18} />
+                            {/* CHANGED: Removed opacity/hover dependency. Stars are now solid yellow-400 by default */}
+                            <div className="flex gap-1 text-yellow-400 transition-colors duration-300">
+                                {[1,2,3,4,5].map(i => <FaStar key={i} size={12} />)}
+                            </div>
                         </div>
                     </div>
                 ))}

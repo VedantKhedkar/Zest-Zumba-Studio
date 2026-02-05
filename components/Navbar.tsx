@@ -34,6 +34,7 @@ const Navbar = () => {
     { name: 'Home', href: '/' },
     { name: 'About', href: '#about' },
     { name: 'Packages', href: '#packages' },
+   
     { 
       name: 'Gallery', 
       href: '#image-gallery',
@@ -43,6 +44,7 @@ const Navbar = () => {
         { name: 'Clients Testimonial', href: '#Testimonial-Gallery' },
       ]
     },
+      { name: 'Contact', href: '#connect' },
   ];
 
   const handleLinkClick = () => setIsOpen(false);
@@ -154,13 +156,13 @@ const Navbar = () => {
 
               <div className="ml-6 pl-6 border-l border-gray-200/20">
                 <Link 
-                  href="#contact" 
+                  href="#form" 
                   className={clsx(
                     "group flex items-center gap-2 px-6 py-2.5 rounded-full font-black text-sm uppercase tracking-wide shadow-lg transition-all duration-300 transform hover:-translate-y-0.5 active:scale-95",
                     "bg-yellow-400 text-purple-900 hover:bg-white hover:text-purple-700 hover:shadow-yellow-400/50"
                   )}
                 >
-                  <span>Join Now</span>
+                  <span>Book Now</span>
                   <FiArrowRight className="group-hover:translate-x-1 transition-transform" />
                 </Link>
               </div>
@@ -267,13 +269,14 @@ const Navbar = () => {
         </div>
         
         {/* MOBILE FOOTER / CTA */}
-        <div className="p-6 pl-8 border-t border-slate-100 bg-white/50">
+            <div className="p-6 pl-8 border-t border-slate-100 bg-white/50">
            <Link 
-             href="#contact" 
+             // CHANGED: Directs to #form for immediate scrolling on mobile
+             href="#form" 
              onClick={handleLinkClick}
              className="flex justify-center items-center gap-2 w-full text-center py-4 rounded-2xl font-black text-purple-900 bg-yellow-400 shadow-lg shadow-yellow-400/20 active:scale-95 hover:bg-yellow-300 hover:shadow-yellow-400/40 transition-all duration-300 uppercase tracking-wide text-sm"
            >
-             Join Now
+             Book Now
              <FiArrowRight />
            </Link>
            <p className="text-center text-[10px] font-bold text-slate-300 mt-5 uppercase tracking-widest">

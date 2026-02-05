@@ -13,7 +13,6 @@ const headTrainer = {
 
 const TrainersSection = () => {
   return (
-    /* UPDATED: py-12 on mobile to remove extra top/bottom space */
     <section id="trainers" className="py-12 md:py-24 bg-purple-50 relative overflow-hidden">
       
       {/* Background Decor */}
@@ -22,24 +21,24 @@ const TrainersSection = () => {
 
       <div className="max-w-7xl mx-auto px-6">
         
-        {/* UPDATED: Reduced bottom margin for mobile */}
         <div className="text-center mb-10 md:mb-16">
             <span className="inline-block py-2 px-8 rounded-full border-2 border-yellow-400 text-purple-500 font-bold tracking-widest uppercase text-xs md:text-sm bg-white shadow-sm">
               TRAINER PROFILE
             </span>
         </div>
 
-        {/* UPDATED: Adjusted gap for mobile (gap-8) vs desktop (gap-24) */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-24 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-center">
           
           {/* LEFT SIDE: INFO */}
           <div className="order-2 lg:order-1">
-            <h2 className="text-4xl md:text-6xl font-black text-slate-900 mb-2 tracking-tight">
+            {/* UPDATED: Name with Purple-600 to Yellow-400 Gradient */}
+            <h2 className="text-4xl md:text-6xl font-black mb-2 tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-yellow-500 drop-shadow-sm">
               {headTrainer.name}
             </h2>
             
             <div className="flex flex-wrap items-center gap-3 md:gap-4 mb-6 md:mb-8">
-                <p className="text-lg md:text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-yellow-600 to-purple-600">
+                {/* Role: Solid Slate-900 (Dark) */}
+                <p className="text-lg md:text-xl font-bold text-slate-900">
                   {headTrainer.role}
                 </p>
                 <span className="hidden md:block w-2 h-2 rounded-full bg-slate-300"></span>
@@ -50,7 +49,6 @@ const TrainersSection = () => {
               {headTrainer.bio}
             </p>
 
-            {/* UPDATED: Tightened grid spacing for mobile */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-8 md:mb-10">
               {headTrainer.highlights.map((item, index) => (
                 <div key={index} className="flex items-center space-x-3 bg-white p-3 rounded-xl border border-purple-100 hover:border-purple-300 transition-colors shadow-sm">
@@ -60,44 +58,41 @@ const TrainersSection = () => {
               ))}
             </div> 
 
-            <div className="flex items-center gap-6">
-              <p className="font-bold text-slate-900 text-xs md:text-sm uppercase tracking-wide">Connect:</p>
-              <div className="flex space-x-3">
-                {[
-                  { icon: <FaInstagram />, url: "https://www.instagram.com/seemabehare?igsh=M2xwY3hhZm03Yzl6" },
-                  { icon: <FaFacebookF />, url: "https://www.facebook.com/share/1AdEqE8Dzg/" },
-                  { icon: <FaWhatsapp />, url: "https://wa.me/+918087409501" }
-                ].map((social, i) => (
-                  <a 
-                    key={i} 
-                    href={social.url}
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="w-9 h-9 md:w-10 md:h-10 rounded-full border border-slate-200 bg-white flex items-center justify-center text-slate-500 hover:text-white hover:border-transparent hover:bg-gradient-to-r hover:from-yellow-400 hover:to-purple-600 transition-all duration-300 shadow-sm hover:shadow-lg hover:-translate-y-1"
-                  >
-                    {social.icon}
+            <div className="flex flex-col sm:flex-row items-center gap-6">
+              <p className="font-bold text-slate-900 text-sm uppercase tracking-wide">Connect:</p>
+              
+              <div className="flex justify-center gap-4">
+                  <a href="https://www.instagram.com/seemabehare?igsh=M2xwY3hhZm03Yzl6" target="_blank" rel="noopener noreferrer" className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-white text-fuchsia-600 flex items-center justify-center shadow-md transition-all duration-300 hover:scale-110 hover:text-white hover:bg-gradient-to-tr hover:from-yellow-400 hover:via-orange-500 hover:to-purple-600 border border-purple-100">
+                      <FaInstagram className="text-xl" />
                   </a>
-                ))}
+                  <a href="https://www.facebook.com/share/1AdEqE8Dzg/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-white text-blue-600 flex items-center justify-center shadow-md transition-all duration-300 hover:scale-110 hover:text-white hover:bg-[#1877F2] border border-blue-100">
+                      <FaFacebookF className="text-lg" />
+                  </a>
+                  <a href="https://wa.me/+918087409501" target="_blank" rel="noopener noreferrer" className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-white text-green-500 flex items-center justify-center shadow-md transition-all duration-300 hover:scale-110 hover:text-white hover:bg-green-500 border border-green-100">
+                      <FaWhatsapp className="text-xl" />
+                  </a>
               </div>
             </div>
           </div>
 
           {/* RIGHT SIDE: IMAGE */}
           <div className="order-1 lg:order-2 relative flex justify-center lg:justify-end items-center">
-             <div className="relative w-[280px] h-[280px] md:w-[450px] md:h-[450px] rounded-[2.5rem] md:rounded-[3rem] overflow-hidden shadow-2xl border-[6px] md:border-[8px] border-white z-10 bg-slate-200 group transition-all duration-500 hover:-translate-y-2">
+              
+              <div className="relative w-[320px] h-[320px] md:w-[450px] md:h-[450px] rounded-[2.5rem] md:rounded-[3rem] shadow-2xl border-[6px] md:border-[8px] border-white z-10 bg-slate-200 group transition-all duration-500 hover:-translate-y-2">
                 <Image
                   src={headTrainer.image}
                   alt={headTrainer.name}
                   fill
                   unoptimized
-                  className="object-cover object-center transition-transform duration-700 group-hover:scale-105"
+                  className="object-cover object-center transition-transform duration-700 group-hover:scale-105 rounded-[2rem] md:rounded-[2.5rem]"
                 />
                 
-                <div className="absolute bottom-4 right-4 md:bottom-6 md:right-6 bg-white/95 backdrop-blur-sm px-4 py-3 md:px-6 md:py-4 rounded-xl md:rounded-2xl shadow-xl border border-purple-50">
-                   <p className="font-black text-2xl md:text-3xl text-transparent bg-clip-text bg-gradient-to-br from-purple-600 to-yellow-500">5+</p>
-                   <p className="text-[10px] md:text-xs text-slate-500 font-bold uppercase tracking-wider">Years Exp.</p>
+                {/* Years Exp Badge */}
+                <div className="absolute bottom-0 right-0 translate-x-4 translate-y-4 md:translate-x-6 md:translate-y-6 bg-white px-4 py-2 md:px-6 md:py-4 rounded-2xl shadow-xl border-2 border-purple-50 z-20 flex flex-col items-center">
+                   <p className="font-black text-l md:text-1xl text-transparent bg-clip-text bg-gradient-to-br from-purple-600 to-yellow-500 leading-none">Certified Aerobic Trainer</p>
+                   <p className="text-[9px] md:text-[10px] text-slate-500 font-bold  tracking-wider mt-0.5">(Indian Institute of Fitness Courses)</p>
                 </div>
-             </div>
+              </div>
           </div>
 
         </div>

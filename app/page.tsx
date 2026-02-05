@@ -8,6 +8,7 @@ import TrainersSection from "../components/TrainersSection";
 import ContactComponent from "@/components/ContactComponent";
 import TestimonialsSection from "@/components/TestimonialsSection";
 import Footer from "@/components/Footer";
+import Achievements from "@/components/Achievement";
 
 export default function Home() {
   return (
@@ -16,6 +17,7 @@ export default function Home() {
       <TrainersSection />
       <AboutSection />
       <PackagesSection />
+      <Achievements />
       <ImageGallery />
       <VideoGallery />
       <TestimonialGallery />

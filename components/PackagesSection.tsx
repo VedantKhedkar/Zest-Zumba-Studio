@@ -27,15 +27,38 @@ const PackagesSection = () => {
     },
   ];
 
+  // CHANGED: Added function to handle WhatsApp redirection
+  const handleJoinNow = (pkg: typeof packages[0]) => {
+    const phoneNumber = "918275794770"; // Replace with your actual WhatsApp number (e.g., 919876543210)
+    
+    // Constructing the message
+    const message = `Dear Team Zest Zumba Studio,
+
+I recently visited your website and I am interested in joining the zumba with the following plan:
+
+*Plan Name:* ${pkg.title}
+*Price:* ₹${pkg.price} ${pkg.frequency}
+
+Kindly guide me through the next steps for registration and payment.
+
+Looking forward to joining the rhythm!
+
+Thank you.`;
+
+    // Create the WhatsApp URL
+    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+    
+    // Open in new tab
+    window.open(whatsappUrl, '_blank');
+  };
+
   return (
-    /* UPDATED: py-12 on mobile to remove extra top/bottom space */
     <section id="packages" className="py-12 md:py-24 relative overflow-hidden bg-slate-50">
       
       {/* Background Decor */}
       <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-purple-50 via-white to-purple-50 -z-10"></div>
       
       <div className="max-w-7xl mx-auto px-6 relative z-10">
-        {/* UPDATED: Reduced bottom margin for mobile header */}
         <div className="text-center mb-10 md:mb-16">
           <h2 className="text-3xl md:text-5xl font-black text-slate-900 mb-3 md:mb-4 font-heading tracking-tight ">
             Membership <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-yellow-500">Plans</span>
@@ -45,7 +68,7 @@ const PackagesSection = () => {
           </p>
         </div>
 
-        {/* MODERN GRID LAYOUT - UPDATED: gap-8 for mobile spacing */}
+        {/* MODERN GRID LAYOUT */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-6 max-w-6xl mx-auto">
           {packages.map((pkg, index) => (
             <div 
@@ -96,6 +119,7 @@ const PackagesSection = () => {
 
               {/* CALL TO ACTION */}
               <button 
+                onClick={() => handleJoinNow(pkg)} // CHANGED: Added click handler
                 className={clsx(
                   "w-full py-3 md:py-3.5 rounded-xl font-black text-xs uppercase tracking-widest transition-all duration-300 shadow-sm active:scale-95",
                   pkg.isPopular 
@@ -103,7 +127,7 @@ const PackagesSection = () => {
                     : "bg-white text-purple-700 border border-purple-100 hover:bg-purple-50 hover:text-purple-800"
                 )}
               >
-                Choose Plan
+                Join Now
               </button>
             </div>
           ))}

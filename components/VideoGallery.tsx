@@ -1,7 +1,7 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import { FiArrowRight, FiPlay, FiGrid, FiX } from "react-icons/fi";
-import { FaTimes } from "react-icons/fa"; 
+import { FaArrowRight, FaTimes } from "react-icons/fa"; 
 import clsx from "clsx";
 
 // --- DUMMY DATA FOR SHORTS ---
@@ -60,15 +60,15 @@ const YouTubeShortsGallery = () => {
           </div>
           
           {/* VIEW ALL BUTTON - Fixed Mobile Scaling and Alignment */}
-          <button
+           <button 
             onClick={() => setShowAllShorts(true)}
-            className="group flex items-center gap-1.5 md:gap-2 px-3 py-2 md:px-6 md:py-3 bg-white border border-purple-100 rounded-full hover:border-yellow-400 hover:shadow-lg hover:shadow-purple-500/10 transition-all duration-300 flex-shrink-0 mb-0.5 md:mb-1"
-          >
-            <span className="font-bold text-slate-600 text-[10px] md:text-sm group-hover:text-purple-700">
-              View All
+            className="group flex items-center gap-1.5 md:gap-2 px-3 py-2 md:px-6 md:py-3 bg-white border border-purple-100 rounded-full hover:border-yellow-400 hover:shadow-lg transition-all duration-300 cursor-pointer flex-shrink-0 mb-0.5 md:mb-1"
+            >
+            <span className="font-bold text-purple-700 text-[10px] md:text-base group-hover:text-purple-900">
+              View All <span className="hidden sm:inline">Shorts</span>
             </span>
-            <div className="w-5 h-5 md:w-8 md:h-8 rounded-full bg-purple-50 flex items-center justify-center group-hover:bg-yellow-400 transition-colors">
-                   <FiArrowRight className="text-purple-600 text-[10px] md:text-sm group-hover:text-purple-900" />
+            <div className="w-6 h-6 md:w-8 md:h-8 rounded-full bg-purple-50 flex items-center justify-center group-hover:bg-yellow-400 transition-colors">
+              <FaArrowRight className="text-purple-600 text-[10px] md:text-sm group-hover:text-purple-900" />
             </div>
           </button>
         </div>

@@ -43,7 +43,7 @@ const TestimonialVideoGallery = () => {
       <span className="w-6 md:w-8 h-[3px] bg-yellow-400 rounded-full"></span>
       <span>Real Stories</span>
     </div>
-    <h2 className="text-2xl sm:text-3xl md:text-6xl font-black text-slate-900 tracking-tighter font-heading leading-tight">
+    <h2 className="text-2xl sm:text-3xl md:text-5xl font-black text-slate-900 tracking-tighter font-heading leading-tight">
       Client <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-yellow-500">Testimonials</span>
     </h2>
   </div>

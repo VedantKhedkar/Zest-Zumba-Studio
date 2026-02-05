@@ -2,11 +2,11 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { FaFacebookF, FaInstagram, FaYoutube } from 'react-icons/fa';
-import { SiGoogle } from 'react-icons/si';
+import { FcGoogle } from 'react-icons/fc'; 
 
 const Footer = () => {
   return (
-    <footer className="bg-gradient-to-br from-purple-50 via-pink-50 to-yellow-50 pt-12 md:pt-20 pb-8 relative border-t border-purple-100/50">
+    <footer id='connect' className="bg-gradient-to-br from-purple-50 via-pink-50 to-yellow-50 pt-12 md:pt-20 pb-8 relative border-t border-purple-100/50">
         
         <div className="max-w-7xl mx-auto px-6 relative z-10">
             
@@ -40,8 +40,8 @@ const Footer = () => {
                         <a href="#" className="w-12 h-12 md:w-16 md:h-16 rounded-xl md:rounded-2xl bg-white text-red-600 flex items-center justify-center shadow-md transition-all duration-300 hover:scale-110 hover:text-white hover:bg-[#FF0000]">
                             <FaYoutube className="text-lg md:text-2xl" />
                         </a>
-                        <a href="https://share.google/G1Kux4KrjwSLDOzQz" target="_blank" rel="noopener noreferrer" className="w-12 h-12 md:w-16 md:h-16 rounded-xl md:rounded-2xl bg-white text-blue-500 flex items-center justify-center shadow-md transition-all duration-300 hover:scale-110 hover:text-white hover:bg-[#4285F4]">
-                            <SiGoogle className="text-lg md:text-2xl" />
+                        <a href="https://share.google/G1Kux4KrjwSLDOzQz" target="_blank" rel="noopener noreferrer" className="w-12 h-12 md:w-16 md:h-16 rounded-xl md:rounded-2xl bg-white flex items-center justify-center shadow-md transition-all duration-300 hover:scale-110">
+                            <FcGoogle className="text-xl md:text-3xl" />
                         </a>
                     </div>
                 </div>
@@ -50,39 +50,43 @@ const Footer = () => {
             {/* DIVIDER */}
             <div className="w-full h-px bg-gradient-to-r from-transparent via-purple-300 to-transparent mb-8 md:mb-10 opacity-30"></div>
 
-            {/* 2. BOTTOM BAR INFORMATION - UPDATED ORDER FOR MOBILE */}
-            <div className="flex flex-col md:flex-row items-center justify-between gap-6 md:gap-8 text-sm text-slate-600 font-medium">
+            {/* 2. BOTTOM BAR INFORMATION */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-center text-sm text-slate-600 font-medium text-center md:text-left">
                 
-                {/* FIRST ON MOBILE: Copyright */}
-                <div className="text-center md:text-left order-1 md:order-1">
+                {/* Copyright (Left) */}
+                <div className="order-1 md:col-span-1">
                     <p className="opacity-80 text-xs md:text-sm">© {new Date().getFullYear()} Zest Zumba Studio. <br className="md:hidden" /> All rights reserved.</p>
                 </div>
 
-                {/* SECOND ON MOBILE: Policies */}
-                <div className="flex flex-row flex-wrap justify-center gap-x-6 gap-y-3 order-2 md:order-2">
+                {/* Policies - CAPSULES (Center) */}
+                <div className="order-2 md:col-span-1 flex flex-wrap justify-center gap-3">
                     {['Privacy Policy', 'Terms of Service', 'Return Policy'].map((item) => (
-                        <Link key={item} href="#" className="hover:text-fuchsia-600 transition-colors relative group text-[10px] md:text-sm uppercase tracking-wider md:normal-case md:tracking-normal">
+                        <Link 
+                            key={item} 
+                            href="#" 
+                            className="px-4 py-1.5 rounded-full border border-purple-200 bg-white/50 text-[10px] md:text-xs font-semibold text-slate-600 hover:bg-purple-100 hover:text-purple-800 transition-all hover:border-purple-300 shadow-sm whitespace-nowrap"
+                        >
                             {item}
-                            <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-fuchsia-600 transition-all duration-300 group-hover:w-full"></span>
                         </Link>
                     ))}
                 </div>
 
-                {/* THIRD ON MOBILE: Developer Credit */}
-                <div className="text-center md:text-right flex items-center gap-2 order-3 md:order-3 bg-white/40 md:bg-transparent px-4 py-2 rounded-full md:p-0">
-                    <span className="opacity-60 text-[10px] md:text-xs uppercase tracking-wider">Developed by</span>
+                {/* Developer Credit (Right) */}
+                {/* CHANGED: 'flex-col' for mobile, 'md:flex-row' for desktop to keep them in one line */}
+                <div className="order-3 md:col-span-1 flex flex-col md:flex-row items-center md:justify-end gap-1 md:gap-2">
+                    <span className="opacity-60 text-[10px] md:text-xs font-medium whitespace-nowrap">Developed by</span>
                     <a 
                         href="https://bizonance.in" 
                         target="_blank" 
                         rel="noopener noreferrer" 
-                        className="flex items-center hover:opacity-80 transition-opacity hover:scale-105 duration-300"
+                        className="block hover:opacity-80 transition-opacity"
                     >
                         <Image 
                             src="/images/bizonance-logo.png" 
                             alt="Bizonance" 
-                            width={90} 
-                            height={25} 
-                            className="object-contain h-5 md:h-6 w-auto grayscale hover:grayscale-0 transition-all" 
+                            width={100} 
+                            height={30} 
+                            className="object-contain h-6 w-auto" 
                         />
                     </a>
                 </div>

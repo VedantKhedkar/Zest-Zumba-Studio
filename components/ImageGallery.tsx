@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import { FiX, FiChevronLeft, FiChevronRight, FiZoomIn, FiArrowRight } from "react-icons/fi";
 import clsx from "clsx";
+import { FaArrowRight } from "react-icons/fa";
 
 // --- PROFESSIONAL STOCK-QUALITY IMAGES ---
 const galleryImages = [
@@ -76,18 +77,18 @@ const ImageGallery = () => {
   
   {/* The rest of your View All button code remains here */}
 
-          <button
-            onClick={() => setShowAllGallery(true)}
-            className="group flex items-center gap-2 px-3 py-2 md:px-6 md:py-3 bg-white border border-purple-100 rounded-full hover:border-yellow-400 hover:shadow-lg transition-all duration-300 flex-shrink-0 mb-0.5 md:mb-1"
-          >
-            <span className="font-bold text-slate-600 text-[10px] md:text-sm group-hover:text-purple-700">
-              View All
-            </span>
-           <div className="w-5 h-5 md:w-8 md:h-8 rounded-full bg-purple-50 flex items-center justify-center group-hover:bg-yellow-400 transition-colors">
-                 <FiArrowRight className="text-purple-600 text-[10px] md:text-sm group-hover:text-purple-900" />
-           </div>
-          </button>
-        </div>
+       <button 
+          onClick={() => setShowAllGallery(true)}
+          className="group flex items-center gap-1.5 md:gap-2 px-3 py-2 md:px-6 md:py-3 bg-white border border-purple-100 rounded-full hover:border-yellow-400 hover:shadow-lg transition-all duration-300 cursor-pointer flex-shrink-0 mb-0.5 md:mb-1"
+         >
+          <span className="font-bold text-purple-700 text-[10px] md:text-base group-hover:text-purple-900">
+            View All <span className="hidden sm:inline">Images</span>
+          </span>
+          <div className="w-6 h-6 md:w-8 md:h-8 rounded-full bg-purple-50 flex items-center justify-center group-hover:bg-yellow-400 transition-colors">
+            <FaArrowRight className="text-purple-600 text-[10px] md:text-sm group-hover:text-purple-900" />
+          </div>
+        </button>
+      </div>
 
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
           {previewImages.map((src, index) => (

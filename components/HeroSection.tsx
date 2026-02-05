@@ -9,7 +9,7 @@ const HeroSection = () => {
       {/* Background Image with Overlay */}
       <div className="absolute inset-0 z-0">
         <Image
-          src="/images/zz1.jpg"
+          src="/images/hero-bg.png"
           alt="Zest Zumba Studio Hero"
           fill
           className="object-cover object-top" // Keeps focus on top part of image
@@ -26,16 +26,27 @@ const HeroSection = () => {
         <div className="absolute bottom-0 left-0 right-0 h-2/3 bg-gradient-to-t from-black/90 via-black/40 to-transparent"></div>
       </div>
 
-      {/* Content - Adjusted Position: Higher than before, but safe from top edge */}
-      <div className="relative z-20 text-center text-white px-4 max-w-4xl mx-auto mt-24 md:mt-32">
+      {/* Content - UPDATED POSITION: Pushed down further (mt-32 md:mt-48) */}
+      <div className="relative z-20 text-center text-white px-4 max-w-4xl mx-auto mt-32 md:mt-40">
         
         {/* Main Headline */}
-        <h1 className="text-5xl md:text-7xl font-black tracking-tighter mb-4 drop-shadow-2xl">
-          FEEL THE <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-yellow-400">RHYTHM</span>
+        {/* CHANGED: Added 'italic' to tilt the text */}
+        <h1 className="text-5xl md:text-8xl font-black tracking-tighter mb-4 drop-shadow-2xl italic">
+          FEEL THE{' '}
+          {/* UPDATED: "RHYTHM" - Hollow Yellow Outline Style */}
+          <span 
+            className="tracking-wide ml-2"
+            style={{ 
+              WebkitTextStroke: '2px #FACC15', // Tailwind yellow-400 hex
+              color: 'transparent',
+            }}
+          >
+          <br />  RHYTHM
+          </span>
         </h1>
         
-        {/* Subheadline */}
-        <p className="text-lg md:text-2xl font-bold mb-8 text-yellow-400 tracking-widest uppercase drop-shadow-lg">
+        {/* Subheadline - UPDATED: Reduced Size */}
+        <p className="text-sm md:text-lg font-bold mb-8 text-yellow-400 tracking-[0.2em] uppercase drop-shadow-lg">
           Move · Breathe · Dance · Transform
         </p>
         
@@ -55,14 +66,6 @@ const HeroSection = () => {
               <span>View Packages</span>
               <FiArrowRight className="group-hover:translate-x-1 transition-transform" />
             </a>
-
-          {/* Secondary Button */}
-          {/* <a 
-            href="#about" 
-            className="px-6 py-3 rounded-full bg-white/5 backdrop-blur-sm border-2 border-yellow-400 text-yellow-400 font-bold text-base hover:bg-yellow-400 hover:text-purple-900 transition-all duration-300 shadow-md"
-          >
-            Learn More
-          </a> */}
         </div>
       </div>
     </section>

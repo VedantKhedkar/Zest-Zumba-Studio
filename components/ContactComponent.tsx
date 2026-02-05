@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import { FiPhone, FiMapPin, FiSend, FiClock, FiCalendar, FiUser, FiActivity, FiCheck } from "react-icons/fi";
+import { FiPhone, FiMapPin, FiSend, FiClock, FiCalendar, FiUser, FiActivity, FiCheck, FiMail } from "react-icons/fi";
 import clsx from "clsx";
 
 const ContactComponent = () => {
@@ -79,6 +79,11 @@ const ContactComponent = () => {
                     value: "+91 9876543210\n+91 9123456789"
                 },
                 { 
+                    icon: <FiMail />, 
+                    label: "Email Us", 
+                    value: "zestzumbastudio@gmail.com" 
+                },
+                { 
                     icon: <FiClock />, 
                     label: "Studio Hours", 
                     value: "Mon - Sat: 6:00 AM - 6:00 PM" 
@@ -98,12 +103,12 @@ const ContactComponent = () => {
           </div>
 
           {/* Right Side: Appointment Form */}
-          <div className="relative">
+          <div className="relative mt-12 lg:mt-0">
             <div className="absolute -inset-2 md:-inset-4 bg-gradient-to-tr from-purple-500/10 to-yellow-500/10 rounded-[1.5rem] md:rounded-[2.5rem] blur-2xl" />
             
-            <form 
+            <form id="form"
               onSubmit={handleSubmit}
-              className="relative bg-white border border-white/50 p-6 md:p-10 rounded-[1.5rem] md:rounded-[2rem] shadow-2xl shadow-purple-900/5 space-y-4 md:space-y-6"
+              className="scroll-mt-28 relative bg-white border border-white/50 p-6 md:p-10 rounded-[1.5rem] md:rounded-[2rem] shadow-2xl shadow-purple-900/5 space-y-4 md:space-y-6"
             >
               <div className="text-center mb-4 md:mb-8">
                   <h3 className="text-xl md:text-2xl font-black text-purple-700 uppercase tracking-wide">
@@ -146,7 +151,7 @@ const ContactComponent = () => {
                       <FiPhone className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" />
                   </div>
                 </div>
-                {/* UPDATED: Appointment Date & Time */}
+                {/* Appointment Date & Time */}
                 <div className="space-y-1.5 md:space-y-2">
                   <label className="text-xs md:text-sm font-bold text-purple-700 ml-1">Date & Preferred Time</label>
                   <div className="relative">
@@ -161,15 +166,18 @@ const ContactComponent = () => {
                 </div>
               </div>
 
-              {/* Class Category */}
+              {/* Class Category - UPDATED OPTIONS */}
               <div className="space-y-1.5 md:space-y-2">
                 <label className="text-xs md:text-sm font-bold text-purple-700 ml-1">Class Category</label>
                 <div className="relative">
                   <select className="w-full px-4 md:px-5 py-3 md:py-4 rounded-xl md:rounded-2xl bg-purple-50/50 border-none focus:ring-2 focus:ring-purple-500/20 transition-all outline-none text-slate-900 appearance-none cursor-pointer text-sm md:text-base">
-                    <option>Zumba Fitness</option>
-                    <option>Yoga & Meditation</option>
-                    <option>Aerobics</option>
-                    <option>Personal Training</option>
+                    <option>Zumba for Female</option>
+                    <option>Zumba for Kids</option>
+                    <option>Personalized Diet Plans</option>
+                    <option>Yoga and Meditation</option>
+                    <option>Personal Fitness Training</option>
+                    <option>Book Consultation</option>
+                      <option>Aerobics</option>
                   </select>
                   <div className="absolute right-5 top-1/2 -translate-y-1/2 pointer-events-none text-slate-400">
                     ▼
